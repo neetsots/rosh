@@ -26,8 +26,9 @@ let  s:White    =  ['NONE',   '#d1d1d1']
 let  s:PaleGrey =  ['NONE',   '#eeeeee']
 let  s:SoftGrey =  ['NONE',   '#898c98']
 let  s:BaseGrey =  ['NONE',   '#595b66']
-let  s:DarkGrey =  ['NONE',   '#222327']
 let  s:PitchGrey=  ['NONE',   '#2b2c31']
+let  s:DarkGrey =  ['NONE',   '#222327']
+let  s:Black    =  ['NONE',   '#000000']
 
 " Text style
 let s:italic    = 'italic'
@@ -41,6 +42,7 @@ let  s:Grey2   =  s:SoftGrey
 let  s:Grey3   =  s:BaseGrey
 let  s:Grey4   =  s:DarkGrey
 let  s:Grey5   =  s:PitchGrey
+let  s:Grey6   =  s:Black
 
 "------------------------------------------------------------------------------
 " HIGHLIGHT helper function to highlight depending on background type
@@ -55,11 +57,11 @@ function! s:highlight(group, fg, bg, style)
 endfunction
 
 " Special syntax colors
-call  s:highlight('VisualColor',  s:Grey4,   s:Green,  s:bold)
-call  s:highlight('InsertColor',  s:Grey4,   s:Blue,   s:none)
-call  s:highlight('ReplaceColor', s:Grey4,   s:Red,    s:none)
-call  s:highlight('CommandColor', s:Grey4,   s:Orange, s:none)
-call  s:highlight('NormalColor',  s:Grey0,   s:Grey4, s:none)
+call  s:highlight('VisualColor',  s:Green,    s:DarkGrey,  s:bold)
+call  s:highlight('InsertColor',  s:Blue,     s:DarkGrey,  s:bold)
+call  s:highlight('ReplaceColor', s:Red,      s:DarkGrey,  s:bold)
+call  s:highlight('CommandColor', s:Orange,   s:DarkGrey,  s:bold)
+call  s:highlight('NormalColor',  s:Grey0,    s:DarkGrey,  s:bold)
 
 " Syntax highlighting groups
 "
@@ -102,7 +104,7 @@ call  s:highlight('Underlined',      s:Grey1,   s:clear,   s:underline)
 call  s:highlight('Error',           s:Orange,  s:clear,   s:underline)
 call  s:highlight('Todo',            s:Grey4,   s:Magenta, s:bold)
 call  s:highlight('Directory',       s:Grey1,   s:clear,   s:bold)
-call  s:highlight('CursorLine',      s:clear,   s:Grey5,   s:bold)
+call  s:highlight('CursorLine',      s:clear,   s:clear,   s:bold)
 call  s:highlight('MatchPatern',     s:Grey0,   s:Green,   s:none)
 call  s:highlight('ColorColumn',     s:Orange,  s:Grey0,   s:none)
 
@@ -120,9 +122,9 @@ call  s:highlight('StatusLineNC',  s:Grey4,    s:Grey4,  s:none)
 
 " --- VIMDIFF -----------------------------------------------------------------
 call  s:highlight('DiffAdd',    s:Grey4, s:Green,  s:bold)
-call  s:highlight('DiffDelete', s:Grey4, s:Red,    s:bold)
+call  s:highlight('DiffDelete', s:Red, s:Red,      s:none)
 call  s:highlight('DiffChange', s:Grey4, s:Orange, s:bold)
-call  s:highlight('DiffText',   s:Grey4, s:Orange, s:italic)
+call  s:highlight('DiffText',   s:Grey4, s:Orange, s:bold)
 
 " --- GIT GUTTER --------------------------------------------------------------
 call  s:highlight('GitGutterAdd',         s:Grey4, s:Green,  s:none)
